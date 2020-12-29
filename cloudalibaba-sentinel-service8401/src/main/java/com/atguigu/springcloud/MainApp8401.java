@@ -1,5 +1,6 @@
 package com.atguigu.springcloud;
 
+import ch.qos.logback.core.db.DBHelper;
 import com.atguigu.springcloud.config.MyConfig;
 import com.atguigu.springcloud.entity.User;
 import org.springframework.boot.SpringApplication;
@@ -33,6 +34,16 @@ public class MainApp8401 {
 
         System.out.println(user1 == user);
 
+        System.out.println("----------------------------");
+
+        // 获取组件
+        String[] beanNamesForType = applicationContext.getBeanNamesForType(User.class);
+        for (String name : beanNamesForType) {
+            System.out.println(name);
+        }
+
+        DBHelper dbHelper = applicationContext.getBean(DBHelper.class);
+        System.out.println(dbHelper);
 
     }
 }
