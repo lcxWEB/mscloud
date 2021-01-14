@@ -2,6 +2,7 @@ package com.atguigu.springcloud.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 /**
  * @author: lichunxia

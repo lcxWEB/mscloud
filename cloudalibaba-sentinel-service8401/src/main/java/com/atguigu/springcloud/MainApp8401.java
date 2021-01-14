@@ -11,6 +11,9 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableDiscoveryClient
 @SpringBootApplication
 public class MainApp8401 {
+
+    private static String bootClassPath = System.getProperty("sun.boot.class.path");
+
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(MainApp8401.class, args);
 
@@ -44,6 +47,8 @@ public class MainApp8401 {
 
         DBHelper dbHelper = applicationContext.getBean(DBHelper.class);
         System.out.println(dbHelper);
+
+        System.out.println(bootClassPath);
 
     }
 }
