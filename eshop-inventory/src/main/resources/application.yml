@@ -1,0 +1,6 @@
+server:
+  port: 2009
+spring:
+  profiles:
+    active: test
+

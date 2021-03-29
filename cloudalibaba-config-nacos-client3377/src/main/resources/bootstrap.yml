@@ -14,3 +14,4 @@ spring:
         group: DEV_GROUP
 #        group: TEST_GROUP
         namespace: 75876f34-02bc-424f-8f57-57c0a3ed5e06
+        ext-config:

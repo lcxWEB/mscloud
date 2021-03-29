@@ -12,7 +12,7 @@ public class FlowLimitController {
         return "------testA";
     }
 
-    @SentinelResource(value = "testB")
+    // @SentinelResource(value = "testB")
     @GetMapping("/testB")
     public String testB() {
         return "------testB";
