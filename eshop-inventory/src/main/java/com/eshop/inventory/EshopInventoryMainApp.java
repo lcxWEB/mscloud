@@ -3,6 +3,7 @@ package com.eshop.inventory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import java.util.Map;
 import java.util.Set;
@@ -16,6 +17,7 @@ import java.util.concurrent.atomic.LongAdder;
  */
 @SpringBootApplication
 @MapperScan("com.eshop.inventory.mapper")
+@EnableAspectJAutoProxy(exposeProxy = true)
 public class EshopInventoryMainApp {
 
     public static void main(String[] args) {

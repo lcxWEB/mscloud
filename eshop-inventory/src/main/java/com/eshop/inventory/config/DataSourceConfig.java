@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
-    @Value("${mybatis.mapper-locations}")
+    @Value("${mybatis.mapper-locations:classpath:mapper/*.xml}")
     private String mapperLocations;
 
     @Bean
@@ -28,6 +28,7 @@ public class DataSourceConfig {
 
     @Bean
     public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
+        System.out.println(mapperLocations);
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(druidDataSource());
         sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(mapperLocations));

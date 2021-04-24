@@ -4,7 +4,9 @@ import com.eshop.inventory.dao.RedisDao;
 import com.eshop.inventory.mapper.UserMapper;
 import com.eshop.inventory.model.User;
 import com.eshop.inventory.service.UserService;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -20,8 +22,11 @@ public class UserServiceImpl implements UserService {
     @Resource
     private RedisDao redisDao;
 
+    @Transactional
     @Override
     public User findUserInfo() {
+        UserServiceImpl userService = (UserServiceImpl) AopContext.currentProxy();
+        userService.getCachedUserInfo();
         return userMapper.findUserInfo();
     }
 

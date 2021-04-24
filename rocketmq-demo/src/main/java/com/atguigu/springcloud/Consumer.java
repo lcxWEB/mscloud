@@ -7,6 +7,7 @@ import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.MessageExt;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Consumer {
@@ -16,7 +17,7 @@ public class Consumer {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("group-test");
 
         // Specify name server addresses.
-        consumer.setNamesrvAddr("47.105.150.11:9876");
+        consumer.setNamesrvAddr("localhost:9876");
 
         // Subscribe one more more topics to consume.
         consumer.subscribe("TopicTest", "*");
@@ -26,7 +27,7 @@ public class Consumer {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
                                                             ConsumeConcurrentlyContext context) {
-                System.out.printf("%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
+                System.out.printf("%s %s Receive New Messages: %s %n", System.currentTimeMillis(), Thread.currentThread().getName(), msgs);
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });
@@ -35,6 +36,8 @@ public class Consumer {
         consumer.start();
 
         System.out.printf("Consumer Started.%n");
+
     }
+
 
 }

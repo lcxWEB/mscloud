@@ -12,7 +12,7 @@ public class SyncProducer {
         DefaultMQProducer producer = new
                 DefaultMQProducer("group-test");
         // Specify name server addresses.
-        producer.setNamesrvAddr("47.105.150.11:9876");
+        producer.setNamesrvAddr("localhost:9876");
         producer.setSendMsgTimeout(60000);
         //Launch the instance.
         producer.start();
